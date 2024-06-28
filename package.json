@@ -1,0 +1,25 @@
+{
+  "name": "poptoptest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "report": "npx playwright show-report",
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.14.9",
+    "globals": "^15.6.0",
+    "typescript": "5.3.3",
+    "typescript-eslint": "^7.14.1",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.19.0"
+  }
+}
