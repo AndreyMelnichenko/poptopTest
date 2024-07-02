@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "name": "TS Manual Run",
+      "skipFiles": ["<node_internals>/**"],
+      "command": "./node_modules/.bin/playwright test --config=playwright.config.ts",
+      "env": {
+        "CI": "false",
+        "TEST1": "12345678"
+      }
+    },
+    {
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "name": "TS Manual Run 2",
+      "skipFiles": ["<node_internals>/**"],
+      "command": "./node_modules/.bin/playwright test --config=playwright.config.ts",
+      "env": {
+        "CI": "false"
+      }
+    }
+]
+}

@@ -1,17 +1,15 @@
 import { test, expect } from "@playwright/test";
 
 test("has title", async ({ page }) => {
-  await page.goto("/auth/");
-
+  await page.goto("/");
   await expect(page).toHaveTitle(/Poptop Parties UK - Party experiences for extraordinary private and corporate events/);
+  const expectedMainText = "Home of extraordinary party experiences";
+  expect(await page.getByTestId("HeroSection").locator("h1").innerText()).toEqual(expectedMainText);
 });
 
-// test("get started link", async ({ page }) => {
-//   await page.goto("https://playwright.dev/");
-
-//   // Click the get started link.
-//   await page.getByRole("link", { name: "Get started" }).click();
-
-//   // Expects page to have a heading with the name of Installation.
-//   await expect(page.getByRole("heading", { name: "Installation" })).toBeVisible();
-// });
+test("has search page", async ({ page }) => {
+  await page.goto("/");
+  await page.getByTestId("Button").getByText("SEARCH").click();
+  await page.waitForURL("**/search/?");
+  await expect(page.locator("div[data-scrollbar]"), "Search page didn't opened").toBeVisible({ timeout: 10000 });
+});
