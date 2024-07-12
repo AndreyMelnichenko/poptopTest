@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx playwright test",
     "report": "npx playwright show-report",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "tsc --build tsconfig.json"
   },
   "keywords": [],
   "author": "",
