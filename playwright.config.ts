@@ -11,6 +11,7 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  //grep: new RegExp(`.*(${process.env.TAG})[^0-9|$]`, "gm"),
   testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
