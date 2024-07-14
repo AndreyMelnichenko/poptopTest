@@ -31,14 +31,16 @@ test("Click on Picture", async ({ page }) => {
     .click();
 });
 
-test("Check values", async () => {
+test("Check values", {
+  tag: ["@C23"],
+}, async () => {
   const mytypes = new BaseTypes();
   console.log(mytypes.isEqual(444, 3454545));
 });
 
-test("@C21 click on View all Next level party food", {
-  tag: "@C21",
-} ,async ({ page }) => {
+test("click on View all Next level party food",{
+  tag: ["@C22"],
+}, async ({ page }) => {
   await page.goto("/");
   const link = await page.getByTestId("Stack").locator("[href='/search/?category=catering']").getAttribute("href");
   await page.goto(link || "/");
@@ -57,25 +59,10 @@ test("@C21 click on View all Next level party food", {
   await expect(page.locator("div[data-scrollbar]")).toBeVisible({ timeout: 10000 });
 });
 
-test.only("Type casting", async () => {
-  // await test.step("Go to SEARCH", async () => {
-  //   await page.goto("/");
-  //   await page.getByTestId("Button").getByText("SEARCH").click();
-  //   await page.waitForURL("**/search/?");
-  // });
-
+test("Type casting ", {
+  tag: "@C21",
+}, async () => {
   await test.step("Get value", async () => {
-
-
-    // const text = await page.getByTestId("Stack").locator("h4").innerText();
-
-    // const flteredText = text.replace("services available to book now", "").trim();
-    //const countOfServices = Number(flteredText);
-
-    // console.log(">>>>>>>>>>>>>> " + typeof flteredText);
-    // console.log(">>>>>>>>>>>>>> " + typeof (Number(flteredText) + 5));
-    // console.log(">>>>>>>>>>>>>> " + typeof ((flteredText as unknown) as number));
-
     const a = [15, 11];
     const b = {
       key: "string 1",
@@ -84,13 +71,10 @@ test.only("Type casting", async () => {
         1, "2", { b: "1" },
       ],
     };
-
+    console.log(">>>>>>>>>>>>>> " + typeof a + " " + a);
     const c = "{\"key\":\"string1\",\"key2\":232,\"key3\":[1,\"2\",{\"b\":\"1\"}]}";
-
     console.log(">>>>>>>>>>>>>> " + typeof c + " " + c);
     console.log(">>>>>>>>>>>>>> " + typeof JSON.parse(c) + " " + JSON.parse(c));
     console.log(">>>>>>>>>>>>>> " + typeof String(b) + " \n" + JSON.stringify(b, undefined, 4));
-
   });
-
 });
