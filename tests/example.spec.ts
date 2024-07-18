@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { BaseTypes } from "../src/types/baseTypes";
+import { BaseActions } from "../src/types/baseTypes";
+import { Person } from "../src/types/person";
 
 test("has title", async ({ page }) => {
   await page.goto("/");
@@ -34,7 +35,7 @@ test("Click on Picture", async ({ page }) => {
 test("Check values", {
   tag: ["@C23"],
 }, async () => {
-  const mytypes = new BaseTypes();
+  const mytypes = new BaseActions();
   console.log(mytypes.isEqual(444, 3454545));
 });
 
@@ -77,4 +78,15 @@ test("Type casting ", {
     console.log(">>>>>>>>>>>>>> " + typeof JSON.parse(c) + " " + JSON.parse(c));
     console.log(">>>>>>>>>>>>>> " + typeof String(b) + " \n" + JSON.stringify(b, undefined, 4));
   });
+});
+
+test("Working with person", {
+  tag: ["@C24"],
+}, async () => {
+  const person1 = new Person();
+  const Andrii = person1.getDefaultPerson();
+
+  const person2 = new Person("Nana", 24);
+  const nana = person2.getDefaultPerson();
+  console.log(Andrii);
 });
