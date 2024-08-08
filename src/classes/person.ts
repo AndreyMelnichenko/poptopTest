@@ -1,3 +1,5 @@
+import { GeneralPerson, FinancialPerson } from "../types/MyTypes";
+
 export class Person {
   private personName: string = "Default name";
   private personAge: number = -1;
@@ -52,28 +54,5 @@ export class Person {
     return result;
   }
 }
-
-type PersonFull = GeneralPerson & ContactPerson & FinancialPerson & FamilyPerson;
-
-type GeneralPerson = {
-  name: string;
-  age: number;
-}
-
-type ContactPerson = {
-  phoneNumber: number;
-  secondNumber: number;
-  email: string;
-}
-
-type FinancialPerson = Omit<GeneralPerson, "age"> & {
-  revenue: number
-}
-
-type FamilyPerson = {
-  isMarried: boolean;
-  isHaveChildren: boolean;
-  address: string;
-}
-
+export { GeneralPerson };
 

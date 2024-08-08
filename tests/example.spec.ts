@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { BaseActions } from "../src/types/baseTypes";
-import { Person } from "../src/types/person";
+import { BaseActions } from "../src/classes/baseTypes";
+import { Person } from "../src/classes/person";
+import { Car } from "../src/classes/car";
+import { waitInMinutes } from "../src/utils/waiter";
 
 test("has title", async ({ page }) => {
   await page.goto("/");
@@ -63,7 +65,7 @@ test("click on View all Next level party food",{
 test("Type casting ", {
   tag: "@C21",
 }, async () => {
-  await test.step("Get value", async () => {
+  test.step("Get value", () => {
     const a = [15, 11];
     const b = {
       key: "string 1",
@@ -82,11 +84,30 @@ test("Type casting ", {
 
 test("Working with person", {
   tag: ["@C24"],
-}, async () => {
+}, () => {
   const person1 = new Person();
   const Andrii = person1.getDefaultPerson();
-
   const person2 = new Person("Nana", 24);
   const nana = person2.getDefaultPerson();
   console.log(Andrii);
+  console.log(nana);
 });
+
+test("Working with Car", {
+  tag: ["@C25"],
+}, async () => {
+
+  const car = new Car();
+  console.log("My car => "+ JSON.stringify(car.getCar(), undefined, 4));
+  console.log("My Passenger => "+ JSON.stringify(car.getPassenger(), undefined, 4));
+  
+});
+
+test("Working with Async/Await", {
+  tag: ["@C26"],
+}, async () => {
+  console.log(`First step ${new Date().toISOString()}`);
+  await waitInMinutes(0.1);
+  console.log(`Second step ${new Date().toISOString()}`);
+});
+
