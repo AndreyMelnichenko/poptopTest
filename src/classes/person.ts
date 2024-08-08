@@ -1,16 +1,17 @@
+import { IPerson } from "src/interfaces/IPerson";
 import { GeneralPerson, FinancialPerson } from "../types/MyTypes";
 
-export class Person {
-  private personName: string = "Default name";
-  private personAge: number = -1;
+export class Person implements IPerson {
+  public name: string = "Default name";
+  public age: number = -1;
   private lastName: string;
 
   constructor(pName?: string, pAge?: number){
     if(pName){
-      this.personName = pName;
+      this.name = pName;
     }
     if(pAge){
-      this.personAge = pAge;
+      this.age = pAge;
     }
   }
 
@@ -21,23 +22,23 @@ export class Person {
     };
   }
 
-  private getPerson(): GeneralPerson {
+  public getPerson(): GeneralPerson {
     return {
-      name: this.personName,
-      age: this.personAge,
+      name: this.name,
+      age: this.age,
     };
   }
 
-  public getDefaultPerson(pName = this.personName, pAge = this.personAge): GeneralPerson {
+  public getDefaultPerson(pName = this.name, pAge = this.age): GeneralPerson {
     if(pName === "Default name"){
-      this.personName = "Andrii";
+      this.name = "Andrii";
     } else {
-      this.personName = pName;
+      this.name = pName;
     }
     if(pAge === -1){
-      this.personAge = 38;
+      this.age = 38;
     } else {
-      this.personAge = pAge;
+      this.age = pAge;
     }
     return this.getPerson();
   }
@@ -54,5 +55,3 @@ export class Person {
     return result;
   }
 }
-export { GeneralPerson };
-

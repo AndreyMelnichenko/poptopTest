@@ -3,6 +3,7 @@ import { BaseActions } from "../src/classes/baseTypes";
 import { Person } from "../src/classes/person";
 import { Car } from "../src/classes/car";
 import { waitInMinutes } from "../src/utils/waiter";
+import { Driver } from "../src/classes/driver";
 
 test("has title", async ({ page }) => {
   await page.goto("/");
@@ -109,5 +110,13 @@ test("Working with Async/Await", {
   console.log(`First step ${new Date().toISOString()}`);
   await waitInMinutes(0.1);
   console.log(`Second step ${new Date().toISOString()}`);
+});
+
+test("Working with Interfaces", {
+  tag: ["@C27"],
+}, async () => {
+  const driver = new Driver();
+  console.log(driver.getDriver());
+  
 });
 
